@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+allure_results/
+allure_report/
+.idea/
+.vscode/
+.env
+.env.local
+.env.browserstack
