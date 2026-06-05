@@ -1,5 +1,5 @@
-from appium.webdriver.common.appiumby import AppiumBy
 import allure
+from appium.webdriver.common.appiumby import AppiumBy
 
 
 class MainPage:

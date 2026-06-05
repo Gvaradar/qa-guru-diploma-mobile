@@ -1,6 +1,6 @@
-import allure
 import pytest
 from appium import webdriver
+
 from config.config import load_config
 from utils.logger import attach_screenshot, attach_html, attach_video
 
