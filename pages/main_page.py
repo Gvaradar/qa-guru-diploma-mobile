@@ -31,8 +31,14 @@ class MainPage:
         self.driver.find_element(*self.SEARCH_INPUT).send_keys(text)
         return self
 
+    @allure.step("Поиск (без автоматического клика): {text}")
+    def search_for(self, text):
+        self.click_search()
+        self.enter_search_text(text)
+        return self
+
     @allure.step("Проверить, что результаты поиска отображаются")
-    def assert_search_results_exist(self):
+    def search_results_should_exist(self):
         results = self.driver.find_elements(*self.RESULT_TITLE)
         assert len(results) > 0
         return self
@@ -48,11 +54,11 @@ class MainPage:
         return self
 
     @allure.step("Проверить, что открылась страница настроек")
-    def assert_settings_opened(self):
+    def settings_should_be_opened(self):
         assert self.driver.find_element(*self.SETTINGS_TITLE).is_displayed()
         return self
 
-    @allure.step("Найти статью: {text}")
+    @allure.step("Найти статью и открыть её: {text}")
     def search_article(self, text):
         self.click_search()
         self.enter_search_text(text)
@@ -89,7 +95,7 @@ class MainPage:
         return self
 
     @allure.step("Проверить, что статья '{expected_title}' сохранена")
-    def assert_article_saved(self, expected_title):
+    def article_should_be_saved(self, expected_title):
         saved_article = self.driver.find_element(*self.RESULT_TITLE)
         assert saved_article.text == expected_title
         return self
